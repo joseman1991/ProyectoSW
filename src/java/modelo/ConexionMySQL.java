@@ -23,7 +23,7 @@ public class ConexionMySQL {
         String servidor = ("localhost");
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            url = "jdbc:mysql://" + servidor + ":" + puerto + "/" + BaseDeDatos;
+            url = "jdbc:mysql://" + servidor + ":" + puerto + "/" + BaseDeDatos+"?autoReconnect=true&useSSL=false";
             conexion = DriverManager.getConnection(url, usuario, clave);
         } catch (ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
