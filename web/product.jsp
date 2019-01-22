@@ -56,8 +56,20 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+                        <div class="leftbar p-r-20 p-r-0-sm">
+                            <div class="search-product pos-relative bo4 of-hidden">
+                                <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="busca" placeholder="Buscar....">
+                                <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+                                    <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+
+
 
                     </div>
+
+
 
                     <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
                         <!--  -->
@@ -125,11 +137,11 @@
                                                 <s:property value="nombre"/>                                             
                                             </s:if>
                                             <s:else>
-                                                 <s:a href="%{detalle}" cssClass="block2-name dis-block s-text3 p-b-5">
-                                                <s:property value="nombre"/>
-                                            </s:a>
+                                                <s:a href="%{detalle}" cssClass="block2-name dis-block s-text3 p-b-5">
+                                                    <s:property value="nombre"/>
+                                                </s:a>
                                             </s:else>
-                                           
+
                                             <s:if test="%{descuento>0}">
                                                 <span class="block2-oldprice m-text7 p-r-5">
                                                     <s:property value="precio"/>
@@ -151,6 +163,8 @@
                             </s:iterator>
 
                         </div>
+
+
 
                         <s:set name="mod" value="#count%#max"/>
                         <s:set name="div" value="#count/#max"/>
@@ -228,7 +242,7 @@
         <!--===============================================================================================-->
         <script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
         <script type="text/javascript">
-          
+
         </script>
 
         <!--===============================================================================================-->

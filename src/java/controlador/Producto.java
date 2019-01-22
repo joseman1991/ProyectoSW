@@ -260,6 +260,28 @@ public class Producto extends ActionSupport implements ModelDriven<Items> {
             return ERROR;
         }
     }
+    private String busca;
+    public String buscarI() {
+        try {
+            evento = 1;
+            Usuarios u = (Usuarios) session.getAttribute("usuario");
+            if (u != null) {                
+                idao.obtenerItems2(1, busca,u.getNombreusuario());
+            } else {                
+                idao.obtenerItems(1, "");
+            }
+            imgdao.obtenerImagenes(producto);
+            session.setAttribute("lista", listaProductos);
+            return SUCCESS;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            mensaje = e.getMessage();
+            return ERROR;
+        } catch (IOException ex) {
+            Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
+            return ERROR;
+        }
+    }
 
     @Override
     public Items getModel() {
@@ -316,6 +338,14 @@ public class Producto extends ActionSupport implements ModelDriven<Items> {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public String getBusca() {
+        return busca;
+    }
+
+    public void setBusca(String busca) {
+        this.busca = busca;
     }
 
 }

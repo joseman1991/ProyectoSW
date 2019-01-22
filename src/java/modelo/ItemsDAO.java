@@ -150,6 +150,33 @@ public class ItemsDAO extends ConexionMySQL {
         }
         cerrarConexion();
     }
+   
+    public void obtenerItems3(int id,String busca) throws SQLException {
+        listaItems.clear();
+        abrirConexion();
+        sentencia = conexion.prepareStatement("select * from items where idtipo=? and nombre like ? order by idcategorias");
+       
+        sentencia.setInt(1, id);
+        sentencia.setString(2, busca + "%");
+        
+        resultado = sentencia.executeQuery();
+        while (resultado.next()) {
+            Items c = new Items();
+            c.setIditem(resultado.getInt(1));
+            c.setNombre(resultado.getString(2));
+            c.setDescripcion(resultado.getString(3));
+            c.setDescripcion2(resultado.getString(4));
+            c.setPrecio(resultado.getFloat(5));
+            c.setDescuento(resultado.getFloat(6));
+            c.setIdtipo(resultado.getInt(7));
+            c.setIdcategorias(resultado.getInt(8));
+            c.setImagen(resultado.getString(9));
+            c.setStock(resultado.getInt(10));
+            c.setRate(resultado.getFloat(11));
+            listaItems.add(c);
+        }
+        cerrarConexion();
+    }
 
     public void obtenerItems2(int id, String busca, String nombreu) throws SQLException {
         listaItems.clear();

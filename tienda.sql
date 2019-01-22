@@ -138,4 +138,25 @@ CREATE  FUNCTION insertarventa(nombre varchar(50)) RETURNS bigint
    return id;
   end
 //
+
+create table reservaciones(
+ idreserva int not null primary key ,
+ nombreusuario character varying(16)  , 
+ fecha date not null,
+ hora time not null,
+ total float default 0
+);
+
+
+create table detallereservacion(
+ idcompra int not null ,
+ -- references reservaciones on update cascade on delete restrict,
+ idtem int not null ,
+ -- references items on update cascade on delete restrict,
+ cantidad int not null,
+ precio float not null,
+ descuento float not null, 
+ iva float 
+ );
+ 
  
