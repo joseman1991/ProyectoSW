@@ -173,7 +173,7 @@ public class ReservasDAO extends ConexionMySQL {
             re.setIdreserva(resultado.getLong(1));
             re.setNombreusuario(resultado.getString(2));
             re.setFecha(resultado.getString(3));
-            re.setItem(new ItemsDAO().obtenerItem(resultado.getInt(6)));
+            re.setItem(new ArticulosDAO().obtenerItem(resultado.getInt(6)));
 //            re.setHora(resultado.getString(4));
 //            re.setTotal(resultado.getFloat(5));
 //            re.setDetalle("Reservacion " + re.getFechas() + "- " + re.getHora());
@@ -192,7 +192,7 @@ public class ReservasDAO extends ConexionMySQL {
             re.setIdreserva(resultado.getLong(1));
             re.setNombreusuario(resultado.getString(2));
             re.setFecha(resultado.getString(3));
-            re.setItem(new ItemsDAO().obtenerItem(resultado.getInt(6)));
+            re.setItem(new ArticulosDAO().obtenerItem(resultado.getInt(6)));
 //            re.setHora(resultado.getString(4));
 //            re.setTotal(resultado.getFloat(5));
 //            re.setDetalle("Reservacion " + re.getFechas() + "- " + re.getHora());
@@ -215,7 +215,7 @@ public class ReservasDAO extends ConexionMySQL {
             re.setEstado(resultado.getString(4));
             re.setOriginal(resultado.getFloat(7));
             re.setTotal(resultado.getFloat(5));
-            re.setItem(new ItemsDAO().obtenerItem(resultado.getInt(6)));
+            re.setItem(new ArticulosDAO().obtenerItem(resultado.getInt(6)));
 //            re.setHora(resultado.getString(4));
 //            re.setTotal(resultado.getFloat(5));
 //            re.setDetalle("Reservacion " + re.getFechas() + "- " + re.getHora());
@@ -238,7 +238,7 @@ public class ReservasDAO extends ConexionMySQL {
             re.setEstado(resultado.getString(4));
             re.setOriginal(resultado.getFloat(7));
             re.setTotal(resultado.getFloat(5));
-            re.setItem(new ItemsDAO().obtenerItem(resultado.getInt(6)));
+            re.setItem(new ArticulosDAO().obtenerItem(resultado.getInt(6)));
 //            re.setHora(resultado.getString(4));
 //            re.setTotal(resultado.getFloat(5));
 //            re.setDetalle("Reservacion " + re.getFechas() + "- " + re.getHora());
@@ -313,7 +313,7 @@ public class ReservasDAO extends ConexionMySQL {
         while (resultado.next()) {
             DetalleCompra dt = new DetalleCompra();
             dt.setIdcompra(resultado.getLong(1));
-            Items item = new ItemsDAO().obtenerItem(resultado.getInt(2));
+            Items item = new ArticulosDAO().obtenerItem(resultado.getInt(2));
             dt.setItem(item);
             dt.setCantidad(resultado.getInt(3));
             dt.setPrecio(resultado.getFloat(4));
@@ -347,7 +347,7 @@ public class ReservasDAO extends ConexionMySQL {
         while (resultado.next()) {
             DetalleCompra dt = new DetalleCompra();
             dt.setIdcompra(resultado.getLong(1));
-            Items item = new ItemsDAO().obtenerItem(resultado.getInt(2));
+            Items item = new ArticulosDAO().obtenerItem(resultado.getInt(2));
             dt.setItem(item);
             dt.setCantidad(resultado.getInt(3));
             dt.setPrecio(resultado.getFloat(4));

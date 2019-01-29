@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import modelo.DetalleCompra;
 import modelo.EnviarMensaje;
 import modelo.Items;
-import modelo.ItemsDAO;
+import modelo.ArticulosDAO;
 import modelo.Reservas;
 import modelo.ReservasDAO;
 import modelo.Usuarios;
@@ -115,7 +115,7 @@ public class Carrito extends ActionSupport implements ModelDriven<Items> {
                         return SUCCESS;
                     }
                 }
-                ItemsDAO idao = new ItemsDAO();
+                ArticulosDAO idao = new ArticulosDAO();
                 items = idao.obtenerItem(items.getIditem());
 //                JSonItems = JSonParser.toJson(items);
                 cantidad = 0;

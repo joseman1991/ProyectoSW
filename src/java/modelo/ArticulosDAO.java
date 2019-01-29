@@ -14,15 +14,15 @@ import java.util.List;
  *
  * @author JOSE
  */
-public class ItemsDAO extends ConexionMySQL {
+public class ArticulosDAO extends ConexionMySQL {
 
     private List<Items> listaItems;
 
-    public ItemsDAO(List<Items> listaItems) {
+    public ArticulosDAO(List<Items> listaItems) {
         this.listaItems = listaItems;
     }
 
-    public ItemsDAO() {
+    public ArticulosDAO() {
     }
 
     public int actualizarProducto(Items item) throws SQLException {
@@ -107,7 +107,7 @@ public class ItemsDAO extends ConexionMySQL {
         sentencia = conexion.prepareStatement("select * from items where idtipo=? order by idcategorias");
         sentencia.setInt(1, id);
         resultado = sentencia.executeQuery();
-        while (resultado.next()) {
+ while (resultado.next()) {
             Items c = new Items();
             c.setIditem(resultado.getInt(1));
             c.setNombre(resultado.getString(2));
@@ -133,7 +133,7 @@ public class ItemsDAO extends ConexionMySQL {
         sentencia.setString(2, busca + "%");
         sentencia.setString(3, nombreu);
         resultado = sentencia.executeQuery();
-        while (resultado.next()) {
+ while (resultado.next()) {
             Items c = new Items();
             c.setIditem(resultado.getInt(1));
             c.setNombre(resultado.getString(2));
@@ -204,7 +204,7 @@ public class ItemsDAO extends ConexionMySQL {
         cerrarConexion();
     }
 
-    public void obtenerItems(int id, String busca) throws SQLException {
+    public void obtenerItems(int id, String busca) throws SQLException {                                                             
         listaItems.clear();
         abrirConexion();
         sentencia = conexion.prepareStatement("select * from items where idtipo=? and nombre like ? order by idcategorias");

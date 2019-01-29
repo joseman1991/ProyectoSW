@@ -12,7 +12,7 @@ import java.util.List;
 import modelo.Categorias;
 import modelo.CategoriasDAO;
 import modelo.Items;
-import modelo.ItemsDAO;
+import modelo.ArticulosDAO;
 
 /**
  *
@@ -37,7 +37,7 @@ public class CategoriasAction extends ActionSupport {
         try { 
             CategoriasDAO c = new CategoriasDAO(listaCategorias);
             c.obtenerCategoria();
-            ItemsDAO i = new ItemsDAO(listaItems);
+            ArticulosDAO i = new ArticulosDAO(listaItems);
             i.obtenerItems(2);
             return SUCCESS;
         } catch (SQLException ex) {
@@ -48,7 +48,7 @@ public class CategoriasAction extends ActionSupport {
 
     public String obtenerProductos() {
         try { 
-            ItemsDAO i = new ItemsDAO(listaItems);
+            ArticulosDAO i = new ArticulosDAO(listaItems);
             i.obtenerItems(1);           
             return SUCCESS;
         } catch (SQLException ex) {

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import modelo.Imagenes;
 import modelo.ImagenesDAO;
 import modelo.Items;
-import modelo.ItemsDAO;
+import modelo.ArticulosDAO;
 import modelo.Opinion;
 import modelo.OpinionDAO;
 import modelo.Usuarios;
@@ -38,7 +38,7 @@ public class Producto extends ActionSupport implements ModelDriven<Items> {
     private Items item;
     private final List<Imagenes> listaImagenes;
     private final ImagenesDAO imgdao;
-    private final ItemsDAO idao;
+    private final ArticulosDAO idao;
     private String mensaje;
     private String busqueda;
     private int producto;
@@ -47,7 +47,7 @@ public class Producto extends ActionSupport implements ModelDriven<Items> {
     public Producto() {
         item = new Items();
         listaProductos = new ArrayList<>();
-        idao = new ItemsDAO(listaProductos);
+        idao = new ArticulosDAO(listaProductos);
         listaImagenes = new ArrayList<>();
         imgdao = new ImagenesDAO(listaImagenes);
         listOpiniones = new ArrayList<>();
@@ -181,6 +181,46 @@ public class Producto extends ActionSupport implements ModelDriven<Items> {
             return ERROR;
         } catch (IOException ex) {
             Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
+            return ERROR;
+        }
+    }
+
+    private int op;
+
+    public int getOp() {
+        return op;
+    }
+
+    public void setOp(int op) {
+        this.op = op;
+    }
+
+    private String ubusca;
+
+    public String getUbusca() {
+        return ubusca;
+    }
+
+    public void setUbusca(String ubusca) {
+        this.ubusca = ubusca;
+    }
+
+    public String buscar2() {
+        try {
+            Usuarios u = (Usuarios) session.getAttribute("usuario");
+            if (u != null) {
+                if (ubusca.equals(u.getNombreusuario())) {
+                    idao.obtenerItems2(1, busqueda, u.getNombreusuario());
+                } else {
+                    idao.obtenerItems(1, busqueda, u.getNombreusuario());
+                }
+            } else {
+                idao.obtenerItems(1, busqueda);
+            }
+            return SUCCESS;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            mensaje = e.getMessage();
             return ERROR;
         }
     }

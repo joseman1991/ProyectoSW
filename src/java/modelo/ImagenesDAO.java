@@ -77,11 +77,18 @@ public class ImagenesDAO extends ConexionMySQL {
         }
         cerrarConexion();
     }
+    
+    
+    
+    
+    
 
     public int insertarImagenes(Items item, Connection conexion) throws SQLException, IOException {
         int res = 0;
 
         sentencia = conexion.prepareStatement("insert into imagenes values (default,?,?,?,?)");
+        
+        if(item.getImagenes()!=null)
         for (int i = 0; i < item.getImages().length; i++) {
             String nombre = item.getIditem() + "_" + (i + 1);
             switch (item.getImagenesContentType()[i]) {
