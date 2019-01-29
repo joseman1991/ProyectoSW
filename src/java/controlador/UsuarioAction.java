@@ -10,8 +10,6 @@ import com.opensymphony.xwork2.ModelDriven;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.mail.MessagingException;
-import modelo.EnviarMensaje;
 import modelo.Items;
 import modelo.ItemsDAO;
 import modelo.Usuarios;
@@ -47,9 +45,9 @@ public class UsuarioAction extends ActionSupport implements ModelDriven<Usuarios
         try {
             int r = udao.insertarUsuarios(usuarios);
             if (r > 0) {
-                EnviarMensaje enviarMensaje = new EnviarMensaje();
-                enviarMensaje.enviarConGMail(usuarios.getCorreo(), "Bienvenido a Beauty Spa Center", "Gracias por registrarte "
-                        + " en nuestro spa,");
+//                EnviarMensaje enviarMensaje = new EnviarMensaje();
+//                enviarMensaje.enviarConGMail(usuarios.getCorreo(), "Bienvenido a Beauty Spa Center", "Gracias por registrarte "
+//                        + " en nuestro spa,");
                 mensaje = "Registro exitoso para el usuario " + usuarios.getNombreusuario();
                 return SUCCESS;
             } else {
@@ -57,7 +55,7 @@ public class UsuarioAction extends ActionSupport implements ModelDriven<Usuarios
                 System.out.println(mensaje);
                 return ERROR;
             }
-        } catch (SQLException | MessagingException e) {
+        } catch (SQLException /*| MessagingException*/ e) {
             mensaje = "Ha ocurrido un error " + e.getMessage();
             System.out.println(mensaje);
             return ERROR;
