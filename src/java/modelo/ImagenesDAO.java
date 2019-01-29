@@ -77,6 +77,11 @@ public class ImagenesDAO extends ConexionMySQL {
         }
         cerrarConexion();
     }
+    
+    
+    
+    
+    
 
     public int insertarImagenes(Items item, Connection conexion) throws SQLException, IOException {
         int res = 0;

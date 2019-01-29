@@ -185,6 +185,46 @@ public class Producto extends ActionSupport implements ModelDriven<Items> {
         }
     }
 
+    private int op;
+
+    public int getOp() {
+        return op;
+    }
+
+    public void setOp(int op) {
+        this.op = op;
+    }
+
+    private String ubusca;
+
+    public String getUbusca() {
+        return ubusca;
+    }
+
+    public void setUbusca(String ubusca) {
+        this.ubusca = ubusca;
+    }
+
+    public String buscar2() {
+        try {
+            Usuarios u = (Usuarios) session.getAttribute("usuario");
+            if (u != null) {
+                if (ubusca.equals(u.getNombreusuario())) {
+                    idao.obtenerItems2(1, busqueda, u.getNombreusuario());
+                } else {
+                    idao.obtenerItems(1, busqueda, u.getNombreusuario());
+                }
+            } else {
+                idao.obtenerItems(1, busqueda);
+            }
+            return SUCCESS;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            mensaje = e.getMessage();
+            return ERROR;
+        }
+    }
+
     public String obtenerLista() {
         try {
 

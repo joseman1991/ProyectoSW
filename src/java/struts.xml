@@ -102,6 +102,11 @@
             <result name="error"> error.jsp</result>            
         </action>  
         
+         <action name="buscap" class="controlador.Producto" method="buscar2">
+            <result name="success">product.jsp</result>
+            <result name="error"> error.jsp</result>            
+        </action>  
+        
          <action name="tienda2" class="controlador.Producto" method="obtenerLista3">
             <result name="success">product.jsp</result>
             <result name="error"> error.jsp</result>            

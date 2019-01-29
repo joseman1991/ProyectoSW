@@ -107,7 +107,8 @@ public class ItemsDAO extends ConexionMySQL {
         sentencia = conexion.prepareStatement("select * from items where idtipo=? order by idcategorias");
         sentencia.setInt(1, id);
         resultado = sentencia.executeQuery();
-        while (resultado.next()) {
+               System.out.println(sentencia);
+ while (resultado.next()) {
             Items c = new Items();
             c.setIditem(resultado.getInt(1));
             c.setNombre(resultado.getString(2));
@@ -133,7 +134,8 @@ public class ItemsDAO extends ConexionMySQL {
         sentencia.setString(2, busca + "%");
         sentencia.setString(3, nombreu);
         resultado = sentencia.executeQuery();
-        while (resultado.next()) {
+               System.out.println(sentencia);
+ while (resultado.next()) {
             Items c = new Items();
             c.setIditem(resultado.getInt(1));
             c.setNombre(resultado.getString(2));
@@ -158,6 +160,7 @@ public class ItemsDAO extends ConexionMySQL {
         sentencia.setInt(1, id);
         sentencia.setString(2, busca + "%");
         sentencia.setString(3, nombreu);
+        System.out.println(sentencia);
         resultado = sentencia.executeQuery();
         while (resultado.next()) {
             Items c = new Items();
@@ -177,12 +180,13 @@ public class ItemsDAO extends ConexionMySQL {
         cerrarConexion();
     }
 
-    public void obtenerItems(int id, String busca) throws SQLException {
+    public void obtenerItems(int id, String busca) throws SQLException {                                                             
         listaItems.clear();
         abrirConexion();
         sentencia = conexion.prepareStatement("select * from items where idtipo=? and nombre like ? order by idcategorias");
         sentencia.setInt(1, id);
         sentencia.setString(2, busca + "%");
+        System.out.println(sentencia);
 
         resultado = sentencia.executeQuery();
         while (resultado.next()) {
